@@ -1,0 +1,64 @@
+doctype html
+html
+    head
+        link(rel="stylesheet", href="css/style.css")
+        link(rel="stylesheet", href="bower_components/bootstrap/dist/css/bootstrap.min.css")
+        title CRM
+    body
+        nav.navbar.navbar-expand.navbar-dark.bg-dark
+            button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarTogglerDemo01' aria-controls='navbarTogglerDemo01' aria-expanded='false' aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            #navbarTogglerDemo01.collapse.navbar-collapse
+                a.ml-1.navbar-brand(href='') CRM
+                ul.navbar-nav.mr-auto.mt-2.mt-lg-0
+                form.form-inline.my-2.my-lg-0
+                    button.btn.btn-primary(type='button' data-toggle='modal' data-target='#exampleModalCenter')
+                        | Login
+        .position-relative.overflow-hidden.p-3.p-md-5.m-md-3.text-center.bg-white
+            .col-md-5.p-lg-5.mx-auto.my-5
+                h1.display-4.font-weight-normal Manage data
+                    p.lead.font-weight-normal.mt-3
+                        | Simple website, so You can manage your business data. Feel free to use :)
+                    button.btn.btn-warning(type='button' data-toggle='modal' data-target='#modalRegister')
+                        | Join now!
+            .product-device.shadow-sm.d-none.d-md-block
+            .product-device.product-device-2.shadow-sm.d-none.d-md-block
+        #exampleModalCenter.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true')
+            .modal-dialog.modal-dialog-centered(role='document')
+                 .modal-content
+                     .modal-header
+                         h5#exampleModalLongTitle.modal-title Sign in
+                         button.close(type='button' data-dismiss='modal' aria-label='Close')
+                             span(aria-hidden='true') &times;
+                     .modal-body.text-center
+                         form.form-signin
+                         label.sr-only(for='inputEmail') Email address
+                         input#inputEmailLogin.form-control(type='email' placeholder='Email address' required='' autofocus='').mt-2
+                         label.sr-only(for='inputPassword') Password
+                         input#inputPasswordLogin.form-control(type='password' placeholder='Password' required='').mt-2
+                         button.btn.btn-lg.btn-primary.btn-block(type='submit' onclick='onSubmitSignIn()').mt-2 Sign in
+                         p.mt-3.mb-3.text-muted &copy; Viacheslav Verchonov 2019
+        #modalRegister.modal.fade(tabindex='-1' role='dialog' aria-labelledby='modalRegister' aria-hidden='true')
+            .modal-dialog.modal-dialog-centered(role='document')
+                 .modal-content
+                     .modal-header
+                         h5#exampleModalLongTitle.modal-title Register
+                         button.close(type='button' data-dismiss='modal' aria-label='Close')
+                             span(aria-hidden='true') &times;
+                     .modal-body.text-center
+                         form.form-signin
+                         label.sr-only(for='inputEmail') Email address
+                         input#inputEmail.form-control(type='email' placeholder='Email address' required='' autofocus='').mt-2
+                         label.sr-only(for='inputPassword') Password
+                         input#inputPassword.form-control(type='password' placeholder='Password' required='').mt-2
+                         button.btn.btn-lg.btn-warning.btn-block(type='submit').mt-2 Register
+                         p.mt-3.mb-3.text-muted &copy; Viacheslav Verchonov 2019
+                     .modal-footer
+                        .p 
+        footer.footer.mt-5.py-3.bg-light
+            .container
+             span.text-muted CRM | Viacheslav Verchonov
+        script(src='bower_components/jquery/dist/jquery.min.js')
+        script(src='bower_components/bootstrap/dist/js/bootstrap.min.js')
+        script(src='js/help.js')
+        

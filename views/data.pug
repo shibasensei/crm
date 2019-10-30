@@ -1,0 +1,42 @@
+doctype html
+html
+    head
+        link(rel="stylesheet", href="css/style.css")
+        link(rel="stylesheet", href="bower_components/bootstrap/dist/css/bootstrap.min.css")
+        title Crm
+    body
+        nav.navbar.navbar-expand.navbar-dark.bg-dark
+            button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarTogglerDemo01' aria-controls='navbarTogglerDemo01' aria-expanded='false' aria-label='Toggle navigation')
+                span.navbar-toggler-icon
+            #navbarTogglerDemo01.collapse.navbar-collapse
+                a.ml-1.navbar-brand(href='') CRM
+                ul.navbar-nav.mr-auto.mt-2.mt-lg-0
+                    li.nav-item.active
+                        a.nav-link(href='#') Data
+
+                a.text-warning(href='#') email@example.com
+        .position-relative.overflow-hidden.p-3.p-md-1.m-md-3.text-center.bg-white
+        main.flex-shrink-0(role='main')
+            .container.scroll
+                form
+                .form-group
+                    label(for='exampleFormControlInput1') Email address:
+                    input#exampleFormControlInput1.form-control(type='email' placeholder='name@example.com')
+                .form-group
+                    label(for='exampleFormControlInput1') Phone:
+                    input#exampleFormControlInput1.form-control(type='email' placeholder='name@example.com')
+                .form-group
+                    label(for='exampleFormControlTextarea1') Comments:
+                    textarea#exampleFormControlTextarea1.form-control(rows='4')
+            .container
+                ul.list-group
+                    li.list-group-item Cras justo odio
+                    li.list-group-item Dapibus ac facilisis in
+                    li.list-group-item Morbi leo risus
+                    li.list-group-item Porta ac consectetur ac
+                    li.list-group-item Vestibulum at eros
+
+        footer.footer.mt-5.py-3.bg-light
+            .container
+             span.text-muted CRM | Viacheslav Verchonov
+
