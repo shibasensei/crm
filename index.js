@@ -7,7 +7,7 @@ const knex = require('knex');
 
 
 const register = require('./controllers/register');
-const addClient = require('./controllers/client');
+const clients = require('./controllers/client');
 const login = require('./controllers/login');
 
 const db = knex({
@@ -55,6 +55,8 @@ app.get('/data',function(req,res){
 app.post('/register',register.handleRegister(db,bcrypt));
 app.post('/login',login.handleLogin(db,bcrypt));
 
-app.post('/client',addClient.addClient(db));
+app.post('/client',clients.addClient(db));
+app.post('/deleteClient',clients.deleteClient(db));
+app.post('/getClients',clients.getClients(db));
 
 app.listen(3003,()=>{console.log('server runs port 3003')});

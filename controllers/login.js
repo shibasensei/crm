@@ -8,7 +8,7 @@ const handleLogin = (db,bcrypt)=>(req,res)=>{
         const isValid = bcrypt.compareSync(req.body.password, data[0].hash);
         if(isValid){
           console.log('done')
-          res.render('welcome');//asd
+          return res.redirect(301, '/welcome');
         }else{
           res.status(400).json('wrong credentials');
         }
