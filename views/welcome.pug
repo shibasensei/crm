@@ -9,12 +9,14 @@ html
             button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarTogglerDemo01' aria-controls='navbarTogglerDemo01' aria-expanded='false' aria-label='Toggle navigation')
                 span.navbar-toggler-icon
             #navbarTogglerDemo01.collapse.navbar-collapse
-                a.ml-1.navbar-brand(href='') CRM
+                a.ml-1.navbar-brand(href='/welcome') CRM
                 ul.navbar-nav.mr-auto.mt-2.mt-lg-0
                     li.nav-item
-                        a.nav-link(href='#') Data
+                        a.nav-link(href='/data') Data
+                    li.nav-item
+                        a.nav-link(href='/add') Add Client
 
-                a.text-warning(href='#') email@example.com
+                a#userEmail.text-warning(href='/profile') #{email}
         .position-relative.overflow-hidden.p-3.p-md-5.m-md-3.text-center.bg-white
             .col-md-5.p-lg-5.mx-auto.my-5
                 h1.display-4.font-weight-normal Welcome!
@@ -24,6 +26,9 @@ html
                         br
                         br
                         | - press on your email to manage account
+                        br
+                        br
+                        | - user Add Client page to keep your data updated
             .product-device.shadow-sm.d-none.d-md-block
             .product-device.product-device-2.shadow-sm.d-none.d-md-block
         footer.footer.mt-5.py-3.bg-light

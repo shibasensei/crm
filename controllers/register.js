@@ -1,13 +1,4 @@
-// const checkCorrectEmail =(email)=>{
 
-//     const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-//     const lowEmail = email.toLowerCase();
-  
-//     if(lowEmail.match(mailformat))
-//       return lowEmail;
-//     else
-//       return false
-  
   const handleRegister = (db, bcrypt) =>(req,res) =>{
   
     const {email, password} = req.body;
@@ -21,7 +12,9 @@
         hash: hash,
         email: lowEmail
       })
-      .then(data=>res.json(data[0]))
+      .then(data=>{
+        res.redirect('/welcome');
+      })
       .catch(err=>{
         if(err.code==='23505')
           res.status(400).json(101) // 101 already registered
