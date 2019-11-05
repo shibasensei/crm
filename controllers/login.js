@@ -10,10 +10,10 @@ const handleLogin = (db,bcrypt)=>(req,res)=>{
           // console.log(req.session.key["userEmail"])
           res.redirect('/welcome');
         }else{
-          res.status(400).json('wrong credentials');
+          res.status(401).json('wrong credentials');
         }
     })
-    .catch(err => res.status(400).json('wrong credentials'));
+    .catch(err => res.status(400).json('try again later'));
   }
   
   module.exports = {

@@ -3,7 +3,7 @@
   
     const {email, password} = req.body;
     const hash = bcrypt.hashSync(password);
-    console.log('EMAIL = ',email,' HASH = ',hash);
+    // console.log('EMAIL = ',email,' HASH = ',password);
     const lowEmail = email.toLowerCase();
 
       db('login')
@@ -17,9 +17,9 @@
       })
       .catch(err=>{
         if(err.code==='23505')
-          res.status(400).json(101) // 101 already registered
+          res.status(402).json(101) // 101 already registered
         else
-          res.status(400).json(102) // 102 i fucked up
+          res.status(401).json(102) // 102 i fucked up
       });
     }
   

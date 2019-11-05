@@ -4,7 +4,7 @@ const addClient = (db) =>(req,res) =>{
   
     const {email,name, phone, comments} = req.body;
     const lowEmail = email.toLowerCase();
-    // console.log(email,name, phone, comments)
+    console.log(email,name,phone,comments);
       db('data')
       .insert({
         email: lowEmail,
@@ -12,12 +12,10 @@ const addClient = (db) =>(req,res) =>{
         clientphone: phone,
         comments: comments
       })
-      .then(data=>res.json(777))
+      .then(data=>res.status(200))
       .catch(err=>{
         if(err.code==='23505')
-          res.status(400).json(101) // 101 already registered
-        else
-          res.status(400).json(102) // 102 i fucked up
+          res.status(400); // 102 i fucked up
       });
     }
     
