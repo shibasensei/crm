@@ -39,6 +39,7 @@
             })
           })
           .then(data=>{
+            console.log(data.status);
             if(data.status===402){document.getElementById("statusRegister").innerHTML = "Already registered";}
             else if(data.status===401){document.getElementById("statusRegister").innerHTML = "Oops, try again later";}
             else{window.location = data.url}
@@ -62,7 +63,6 @@
             method: 'post',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify({
-              email: emailUser,
               phone: phone,
               name: name,
               comments: comments
@@ -82,18 +82,11 @@
       document.getElementById("statusAdd").innerHTML = "Fill the fields, please."
     }
   }
+
   dataPage = () =>{
-
-  }
-
-  welcomePage = () =>{
 
   }
 
   profilePage = () =>{
     
   }
-
-  setInterval(function(e){
-    document.getElementById("statusAdd").innerHTML = '';
-}, 10000);

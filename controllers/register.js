@@ -1,5 +1,5 @@
 
-  const handleRegister = (db, bcrypt) =>(req,res) =>{
+  const handleRegister = (db, bcrypt,user) =>(req,res) =>{
   
     const {email, password} = req.body;
     const hash = bcrypt.hashSync(password);
@@ -13,6 +13,7 @@
         email: lowEmail
       })
       .then(data=>{
+        user.email = lowEmail;
         res.redirect('/welcome');
       })
       .catch(err=>{

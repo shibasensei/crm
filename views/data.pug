@@ -22,9 +22,27 @@ html
             .container.mt-2.mb-2
                 ul.list-group
                     each val in data
-                        li.list-group-item= val
-
+                        li.list-group-item.border-0
+                            button.btn.btn-light.w-100.text-left.border(type='button' data-toggle='modal' data-target='#modalItem') #{val}
+        #modalItem.modal.fade(tabindex='-1' role='dialog' aria-labelledby='modalItem' aria-hidden='true')
+            .modal-dialog.modal-dialog-centered(role='document')
+                 .modal-content
+                     .modal-header
+                         h5#exampleModalLongTitle.modal-title Info 
+                            span#id.invisible 1
+                         button.close(type='button' data-dismiss='modal' aria-label='Close')
+                             span(aria-hidden='true') &times;
+                     .modal-body
+                         form.form-signin
+                         p#clientName Name: Slava
+                         p#clientPhone Phone: +380994564590
+                         p#clientComment Comment: Asdasdasd
+                         button.btn.btn-lg.btn-danger.btn-block(type='submit' onclick='deleteItem').mt-2 Delete
+                         p.mt-3.mb-3.text-muted &copy; Viacheslav Verchonov 2019
         footer.footer.mt-5.py-3.bg-light
             .container
              span.text-muted CRM | Viacheslav Verchonov
+        script(src='bower_components/jquery/dist/jquery.min.js')
+        script(src='bower_components/bootstrap/dist/js/bootstrap.min.js')
+        script(src='js/help.js')
 

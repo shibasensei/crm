@@ -1,13 +1,11 @@
 
 
-const addClient = (db) =>(req,res) =>{
+const addClient = (db,user) =>(req,res) =>{
   
-    const {email,name, phone, comments} = req.body;
-    const lowEmail = email.toLowerCase();
-    console.log(email,name,phone,comments);
+    const {name, phone, comments} = req.body;
       db('data')
       .insert({
-        email: lowEmail,
+        email: user.email,
         clientname: name,
         clientphone: phone,
         comments: comments
@@ -31,13 +29,15 @@ const deleteClient = (db) =>(req,res) =>{
   });
 }
 
-const getClients = (db) =>(req,res) =>{
-    const{email} = req.body;
+const getClients = (db,user) =>(req,res) =>{
     db
     .select()
     .from('data')
-    .where('email',email)
-    .then(data=>res.json(data))
+    .where('email',user.email)
+    .then(data=>{
+      console.log(data);
+      res.json(data);
+    })
     .catch(err=>{
       if(err.code==='23505')
         res.status(400).json(102) // 102 i fucked up

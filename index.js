@@ -1,19 +1,12 @@
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const redis = require('redis');
-const redisStore = require('connect-redis')(session);
-const client  = redis.createClient();
+const user = require('./global/vars');
+
 
 const router = express.Router();
 const app = express();
 
-app.use(session({
-  secret: 'ssshhhhh',
-  store: new redisStore({ host: 'localhost', port: 6379, client: client,ttl : 260}),
-  saveUninitialized: false,
-  resave: false
-}));
 
 const bcrypt = require('bcrypt-nodejs');
 
@@ -21,7 +14,7 @@ const path = require('path');
 const cors = require('cors');
 const knex = require('knex');
 
-app.use(session({secret: 'ssshhhhh',saveUninitialized: true,resave: true}));
+app.use(session({secret: 'secret',saveUninitialized: true,resave: true}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
@@ -46,42 +39,69 @@ app.set('view engine','pug');
 app.use(express.static(path.join(__dirname,'public')))
 
 router.get('/',function(req,res){
-
-    res.render('index',{
-        
-    });
+  if(user.email){
+    res.redirect("/welcome");
+  }else{
+    user.email = "";
+    res.render('index',{});
+  }
 });
+
+router.get('/logoff',(req,res)=>{
+  user.email = "";
+  res.redirect("/");
+});
+
 router.get('/welcome',function(req,res){
-
-  res.render('welcome',{
-     email: "test@email.com"
-  });
+  if(user.email){
+    res.render('welcome',{
+      email: user.email
+   });
+  }else{
+    res.redirect("/");
+  }
+  
 });
+
 router.get('/profile',function(req,res){
-
-  res.render('profile',{
-    email: "test@email.com"
-  });
+  if(user.email){
+    res.render('profile',{
+      email: user.email
+    });
+  }else{
+    res.redirect("/");
+  }
+  
 });
+
 router.get('/data',function(req,res){
-
-  res.render('data',{
-    email: "test@email.com",
-    data: ["1","2","3","4"]
-  });
+  clients.getClients(db,user);
+  if(user.email){
+    res.render('data',{
+      email: user.email,
+      data: user.clients
+    });
+  }else{
+    res.redirect('/');
+  }
 });
+
 router.get('/add',function(req,res){
-
-  res.render('add',{
-    email: "test@email.com"
-  });
+  if(user.email){
+    res.render('add',{
+      email: user.email
+    });
+  }else{
+    res.redirect('/');
+  }
 });
-router.post('/register',register.handleRegister(db,bcrypt));
-router.post('/login',login.handleLogin(db,bcrypt));
 
-router.post('/client',clients.addClient(db));
+router.post('/register',register.handleRegister(db,bcrypt,user));
+router.post('/login',login.handleLogin(db,bcrypt,user));
+
+router.post('/client',clients.addClient(db,user));
 router.post('/deleteClient',clients.deleteClient(db));
-router.post('/getClients',clients.getClients(db));
+router.post('/getClients',clients.getClients(db,user));
 
 app.use('/',router);
 
