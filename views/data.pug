@@ -20,7 +20,7 @@ html
         .position-relative.overflow-hidden.p-3.p-md-1.m-md-3.text-center.bg-white
         main.flex-shrink-0(role='main')
             .container.mt-2.mb-2
-                if data === undefined
+                if data === undefined || data.length ===0
                     p You have no records :(
                 else
                     ul.list-group
@@ -42,24 +42,24 @@ html
                                if index === "clientphone"
                                     - phone += data ;
                             li.list-group-item.border-0
-                                button.btn.btn-light.w-100.text-left.border.d-inline-block.pt-3(id=itemId type='button' data-toggle='modal' data-target='#modalItem' onclick='modalData')
+                                button.btn.btn-light.w-100.text-left.border.d-inline-block.pt-3(id=''+itemId type='button' data-toggle='modal' data-target='#modalItem' onclick='modalData(this)')
                                     p#Name #{itemName} 
-                                        span#itemId.invisible #{itemId} 
+                                    span#itemComment.d-none #{itemComment}
                                     p#Phone #{phone}
         #modalItem.modal.fade(tabindex='-1' role='dialog' aria-labelledby='modalItem' aria-hidden='true')
             .modal-dialog.modal-dialog-centered(role='document')
                  .modal-content
                      .modal-header
                          h5#exampleModalLongTitle.modal-title Info 
-                            span#id.invisible 1
+                            span#id.d-none 
                          button.close(type='button' data-dismiss='modal' aria-label='Close')
                              span(aria-hidden='true') &times;
                      .modal-body
                          form.form-signin
-                         p#clientName Name: Slava
-                         p#clientPhone Phone: +380994564590
-                         p#clientComment Comment: Asdasdasd
-                         button.btn.btn-lg.btn-danger.btn-block(type='submit' onclick='deleteItem').mt-2 Delete
+                         p#clientName 
+                         p#clientPhone 
+                         p#clientComment 
+                         button.btn.btn-lg.btn-danger.btn-block(type='submit' onclick='deleteItem()').mt-2 Delete
                          p.mt-3.mb-3.text-muted &copy; Viacheslav Verchonov 2019
         footer.footer.mt-5.py-3.bg-light
             .container
@@ -67,4 +67,5 @@ html
         script(src='bower_components/jquery/dist/jquery.min.js')
         script(src='bower_components/bootstrap/dist/js/bootstrap.min.js')
         script(src='js/help.js')
+        script(src='js/modal.js')
 

@@ -17,7 +17,7 @@ const addClient = (db,user) =>(req,res) =>{
       });
     }
     
-const deleteClient = (db) =>(req,res) =>{
+const deleteClient = (db,user) =>(req,res) =>{
   const {id} = req.body;
   db('data')
   .where('id',id)
@@ -36,7 +36,7 @@ const getClients = (db,user) =>(req,res) =>{
     .where('email',user.email)
     .then(data=>{
       user.clients = data;
-      res.redirect('/add');
+      res.redirect('/data');
     })
     .catch(err=>{
       if(err.code==='23505')

@@ -98,7 +98,7 @@ router.post('/register',register.handleRegister(db,bcrypt,user));
 router.post('/login',login.handleLogin(db,bcrypt,user));
 
 router.post('/client',clients.addClient(db,user));
-router.post('/deleteClient',clients.deleteClient(db));
+router.post('/deleteClient',clients.deleteClient(db,user));
 
 router.get('/getClients',clients.getClients(db,user));
 

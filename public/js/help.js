@@ -1,3 +1,4 @@
+
 function validateEmail(email) {
   var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
@@ -87,5 +88,22 @@ function validateEmail(email) {
     }
   }
 
+  deleteItem = () =>{
+    const id = document.getElementById("id").innerHTML;
+    fetch('http://localhost:3003/deleteClient',{
+        method: 'post',
+        headers: {'Content-Type' : 'application/json'},
+        body: JSON.stringify({
+            id: id
+        })
+    })
+    .then(respose=>{
+      if(respose.status===200){
+        window.location = "http://localhost:3003/getClients";
+      }else{
+        console.log("error");
+      }
+    });
+};
 
  
