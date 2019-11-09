@@ -29,13 +29,13 @@ const deleteClient = (db) =>(req,res) =>{
   });
 }
 
-const getClients = (db,user) =>(req,res) =>{
+const getClients = (db) =>(req,res) =>{
+  const {email} = req.body;
     db
     .select()
     .from('data')
-    .where('email',user.email)
+    .where('email',email)
     .then(data=>{
-      console.log(data);
       res.json(data);
     })
     .catch(err=>{

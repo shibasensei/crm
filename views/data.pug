@@ -20,10 +20,32 @@ html
         .position-relative.overflow-hidden.p-3.p-md-1.m-md-3.text-center.bg-white
         main.flex-shrink-0(role='main')
             .container.mt-2.mb-2
-                ul.list-group
-                    each val in data
-                        li.list-group-item.border-0
-                            button.btn.btn-light.w-100.text-left.border(type='button' data-toggle='modal' data-target='#modalItem') #{val}
+                if data === undefined
+                    p You have no records :(
+                else
+                    ul.list-group
+                        - var itemName = "Name: ";
+                        - var itemId;
+                        - var itemComment ="Comment: ";
+                        - var phone = "Phone: ";
+                        each val in data
+                            - itemName = "Name: ";
+                            - itemComment = "Comment: ";
+                            - phone ="Phone: ";
+                            each data, index in val 
+                               if index === "id"
+                                    - itemId = data;
+                               if index === "clientname"
+                                    - itemName += data;
+                               if index === "comments"
+                                    - itemComment += data;
+                               if index === "clientphone"
+                                    - phone += data ;
+                            li.list-group-item.border-0
+                                button.btn.btn-light.w-100.text-left.border.d-inline-block.pt-3(id=itemId type='button' data-toggle='modal' data-target='#modalItem' onclick='modalData')
+                                    p#Name #{itemName} 
+                                        span#itemId.invisible #{itemId} 
+                                    p#Phone #{phone}
         #modalItem.modal.fade(tabindex='-1' role='dialog' aria-labelledby='modalItem' aria-hidden='true')
             .modal-dialog.modal-dialog-centered(role='document')
                  .modal-content

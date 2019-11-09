@@ -1,4 +1,9 @@
-  onSubmitSignIn = () => {
+function validateEmail(email) {
+  var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+}
+
+ onSubmitSignIn = () => {
 
     const signInEmail = document.getElementById("inputEmailLogin").value;
     const signInPass = document.getElementById("inputPasswordLogin").value;
@@ -26,10 +31,10 @@
   }
 
   onSubmitRegister = () => {
-    const registerInEmail = document.getElementById("inputEmail").value;
+    const registerInEmail = document.getElementById("inputEmail").value.toLowerCase();
     const registerPass = document.getElementById("inputPassword").value;
-
-    if(registerInEmail!=='' && registerPass!==''){
+    
+    if(registerInEmail!=='' && registerPass!==''&& validateEmail(registerInEmail)){
           fetch('http://localhost:3003/register',{
             method: 'post',
             headers: {'Content-Type' : 'application/json'},
@@ -48,16 +53,14 @@
             document.getElementById("statusRegister").innerHTML = "Oops, try again later";
            });
     }else{
-      document.getElementById("statusRegister").innerHTML = "Enter login and password";
+      document.getElementById("statusRegister").innerHTML = "Enter email and password";
     }
   }
 
   addClient = () => {
-    const emailUser = "test@test.ua";
     const name = document.getElementById("addName").value;
     const phone = document.getElementById("addPhone").value;
     const comments = document.getElementById("addComments").value;
-    console.log(emailUser,name,phone,comments);
     if(name!=='' | phone!=='' | comments!==''){
           fetch('http://localhost:3003/client',{
             method: 'post',
@@ -69,24 +72,22 @@
             })
           })
           .then(data=>{
-            if(data.status===200){
-              document.getElementById("statusAdd").innerHTML = "Client added!"
+            console.log(data.status)
+            if(data.status!==200){
+              document.getElementById("statusAdd").innerHTML = "Client added!";
             }else{
-              document.getElementById("statusAdd").innerHTML = "Oops, try again later :("
+              document.getElementById("statusAdd").innerHTML = "Oops, try again later :(";
             }
           })
           .catch(err=>{ 
-            document.getElementById("statusAdd").innerHTML = "Oops, try again later :("
+            document.getElementById("statusAdd").innerHTML = "Oops, try again later :(";
           });
     }else{
-      document.getElementById("statusAdd").innerHTML = "Fill the fields, please."
+      document.getElementById("statusAdd").innerHTML = "Fill the fields, please.";
     }
   }
 
-  dataPage = () =>{
-
+  modalData = () =>{
+    document.getElementById("clientName").innerHTML = 
   }
-
-  profilePage = () =>{
-    
-  }
+ 

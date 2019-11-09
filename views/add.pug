@@ -18,7 +18,6 @@ html
 
                 a.text-warning(href='/profile') #{email}
         .position-relative.overflow-hidden.p-3.p-md-4.m-md-3.text-center.bg-white
-            .p#statusAdd.text-secondary 
         main.flex-shrink-0(role='main')
             .container.scroll
                 form.p-3.border.rounded
@@ -32,10 +31,11 @@ html
                         label(for='exampleFormControlTextarea1') Comments:
                         textarea#addComments.form-control(rows='4')
                     button.btn.btn-success.btn-block(type='submit' onclick='addClient()') Add Client
+                    .modal-footer
+                        .p#statusAdd
         footer.footer.mt-5.py-3.bg-light
             .container
              span.text-muted CRM | Viacheslav Verchonov
         script(src='bower_components/jquery/dist/jquery.min.js')
         script(src='bower_components/bootstrap/dist/js/bootstrap.min.js')
         script(src='js/help.js')
-

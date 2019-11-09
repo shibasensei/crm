@@ -1,12 +1,9 @@
 const express = require('express');
 const session = require('express-session');
 const bodyParser = require('body-parser');
-const user = require('./global/vars');
-
 
 const router = express.Router();
 const app = express();
-
 
 const bcrypt = require('bcrypt-nodejs');
 
@@ -23,6 +20,8 @@ app.use(cors());
 const register = require('./controllers/register');
 const clients = require('./controllers/client');
 const login = require('./controllers/login');
+
+const user = require('./global/vars');
 
 const db = knex({
     client: 'pg',
@@ -75,11 +74,10 @@ router.get('/profile',function(req,res){
 });
 
 router.get('/data',function(req,res){
-  clients.getClients(db,user);
   if(user.email){
     res.render('data',{
       email: user.email,
-      data: user.clients
+      data: ""
     });
   }else{
     res.redirect('/');
@@ -101,7 +99,7 @@ router.post('/login',login.handleLogin(db,bcrypt,user));
 
 router.post('/client',clients.addClient(db,user));
 router.post('/deleteClient',clients.deleteClient(db));
-router.post('/getClients',clients.getClients(db,user));
+router.get('/getClients',clients.getClients(db));
 
 app.use('/',router);
 
