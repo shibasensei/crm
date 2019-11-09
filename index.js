@@ -77,7 +77,7 @@ router.get('/data',function(req,res){
   if(user.email){
     res.render('data',{
       email: user.email,
-      data: ""
+      data: user.clients
     });
   }else{
     res.redirect('/');
@@ -99,7 +99,8 @@ router.post('/login',login.handleLogin(db,bcrypt,user));
 
 router.post('/client',clients.addClient(db,user));
 router.post('/deleteClient',clients.deleteClient(db));
-router.get('/getClients',clients.getClients(db));
+
+router.get('/getClients',clients.getClients(db,user));
 
 app.use('/',router);
 

@@ -87,7 +87,5 @@ function validateEmail(email) {
     }
   }
 
-  modalData = () =>{
-    document.getElementById("clientName").innerHTML = 
-  }
+
  

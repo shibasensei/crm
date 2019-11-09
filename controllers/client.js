@@ -29,14 +29,14 @@ const deleteClient = (db) =>(req,res) =>{
   });
 }
 
-const getClients = (db) =>(req,res) =>{
-  const {email} = req.body;
+const getClients = (db,user) =>(req,res) =>{
     db
     .select()
     .from('data')
-    .where('email',email)
+    .where('email',user.email)
     .then(data=>{
-      res.json(data);
+      user.clients = data;
+      res.redirect('/add');
     })
     .catch(err=>{
       if(err.code==='23505')
