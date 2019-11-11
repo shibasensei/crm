@@ -6,7 +6,6 @@ const port = process.env.PORT || 3003;
 
 const router = express.Router();
 const app = express();
-app.use(express.favicon());
 
 const bcrypt = require('bcrypt-nodejs');
 
