@@ -3,7 +3,7 @@
   
     const {email, password} = req.body;
     const hash = bcrypt.hashSync(password);
-    // console.log('EMAIL = ',email,' HASH = ',password);
+     console.log('EMAIL = ',email,' HASH = ',password);
     const lowEmail = email.toLowerCase();
 
       db('login')

@@ -38,8 +38,8 @@ const db = knex({
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','pug');
 app.use(express.static(path.join(__dirname,'public')))
-
-router.get('https://crm-freeman.herokuapp.com/',function(req,res){
+user.email = "vv@gmail.com";
+router.get('/',function(req,res){
   if(user.email){
     res.redirect("/welcome");
   }else{
@@ -48,12 +48,12 @@ router.get('https://crm-freeman.herokuapp.com/',function(req,res){
   }
 });
 
-router.get('https://crm-freeman.herokuapp.com/logoff',(req,res)=>{
+router.get('/logoff',(req,res)=>{
   user.email = "";
   res.redirect("/");
 });
 
-router.get('https://crm-freeman.herokuapp.com/welcome',function(req,res){
+router.get('/welcome',function(req,res){
   if(user.email){
     res.render('welcome',{
       email: user.email
@@ -64,7 +64,7 @@ router.get('https://crm-freeman.herokuapp.com/welcome',function(req,res){
   
 });
 
-router.get('https://crm-freeman.herokuapp.com/profile',function(req,res){
+router.get('/profile',function(req,res){
   if(user.email){
     res.render('profile',{
       email: user.email
@@ -75,7 +75,7 @@ router.get('https://crm-freeman.herokuapp.com/profile',function(req,res){
   
 });
 
-router.get('https://crm-freeman.herokuapp.com/data',function(req,res){
+router.get('/data',function(req,res){
   if(user.email){
     res.render('data',{
       email: user.email,
@@ -86,7 +86,7 @@ router.get('https://crm-freeman.herokuapp.com/data',function(req,res){
   }
 });
 
-router.get('https://crm-freeman.herokuapp.com/add',function(req,res){
+router.get('/add',function(req,res){
   if(user.email){
     res.render('add',{
       email: user.email
@@ -96,13 +96,23 @@ router.get('https://crm-freeman.herokuapp.com/add',function(req,res){
   }
 });
 
-router.post('https://crm-freeman.herokuapp.com/register',register.handleRegister(db,bcrypt,user));
-router.post('https://crm-freeman.herokuapp.com/login',login.handleLogin(db,bcrypt,user));
+router.get('/analytics',function(req,res){
+  if(user.email){
+    res.render('analytics',{
+      email: user.email
+    });
+  }else{
+    res.redirect('/');
+  }
+});
 
-router.post('https://crm-freeman.herokuapp.com/client',clients.addClient(db,user));
-router.post('https://crm-freeman.herokuapp.com/deleteClient',clients.deleteClient(db,user));
+router.post('/register',register.handleRegister(db,bcrypt,user));
+router.post('/login',login.handleLogin(db,bcrypt,user));
 
-router.get('https://crm-freeman.herokuapp.com/getClients',clients.getClients(db,user));
+router.post('/client',clients.addClient(db,user));
+router.post('/deleteClient',clients.deleteClient(db,user));
+
+router.get('/getClients',clients.getClients(db,user));
 
 app.use('/',router);
 
