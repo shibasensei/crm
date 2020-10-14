@@ -14,11 +14,10 @@ html
                     li.nav-item.active
                         a.nav-link(href='/getClients') Data
                     li.nav-item
-                        a.nav-link(href='/add') Add Client
+                        a.nav-link(href='/add') Add Item
                     li.nav-item
                         a.nav-link(href='/analytics') Analytics
                 a.text-warning(href='/profile') #{email}
-
         .position-relative.overflow-hidden.p-3.p-md-1.m-md-3.text-center.bg-white
         main.flex-shrink-0(role='main')
             .container.mt-2.mb-2
@@ -31,22 +30,24 @@ html
                         - var quantity;
                         - var price;
                         - var date;
-                        - var email
+                        - var email2
                         - var comments ="Comment: ";
+                        - var total
                         each val in data
                             - itemId = "";
                             - productName = "Product name: ";
                             - quantity = "Quantity: ";
                             - price = "Price: ";
                             - date = "Date: "
-                            - email = "Email: "
+                            - email2 = "Email: "
+                            - total = "Total: "
                             each data, index in val 
                                if index === "id"
                                     - itemId += data;
                                if index === "product_name"
                                     - productName += data;
                                if index === "email"
-                                    - email += data;
+                                    - email2 += data;
                                if index === "price"
                                     - price += data ;
                                if index === "quantity"
@@ -55,15 +56,18 @@ html
                                     - date += data;
                                if index === "comments"
                                     - comments +=data;
+                               if index === "total"
+                                    - total += data
                             li.list-group-item.border-0
                                 button.btn.btn-light.w-100.text-left.border.d-inline-block.pt-3(id=''+itemId type='button' data-toggle='modal' data-target='#modalItem' onclick='modalData(this)')
                                     p#productName #{productName} 
                                     span#comments.d-none #{comments}
                                     p#Date #{date}
-                                    p#Email #{email}
+                                    p#Email #{email2}
                                     span#quantity.d-none #{quantity}
                                     span#price.d-none #{price}
                                     span#id.d-none #{itemId}
+                                    span#totalSum.d-none #{total}
         #modalItem.modal.fade(tabindex='-1' role='dialog' aria-labelledby='modalItem' aria-hidden='true')
             .modal-dialog.modal-dialog-centered(role='document')
                  .modal-content
@@ -81,6 +85,7 @@ html
                             p#quantityModal
                             p#purchase_dateModal
                             p#commentsModal
+                            p#totalSumModal
                          button.btn.btn-lg.btn-danger.btn-block(type='submit' onclick='deleteItem()').mt-2 Delete
                          p.mt-3.mb-3.text-muted &copy; Viacheslav Verchonov 2019
         footer.footer.mt-5.py-3.bg-light

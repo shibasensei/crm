@@ -14,10 +14,9 @@ html
                     li.nav-item
                         a.nav-link(href='/getClients') Data
                     li.nav-item.active
-                        a.nav-link(href='/add') Add Client
+                        a.nav-link(href='/add') Add Item
                     li.nav-item
                         a.nav-link(href='/analytics') Analytics
-
                 a.text-warning(href='/profile') #{email}
         .position-relative.overflow-hidden.p-3.p-md-4.m-md-3.text-center.bg-white
         main.flex-shrink-0(role='main')
@@ -35,7 +34,7 @@ html
                     .form-group
                         label(for='exampleFormControlTextarea1') Comments:
                         textarea#addComments.form-control(rows='4')
-                    button.btn.btn-success.btn-block(type='submit' onclick='addClient()') Add Client
+                    button.btn.btn-warning.btn-block(type='submit' onclick='addClient()') Add Client
                     .modal-footer
                         .p#statusAdd
         footer.footer.mt-5.py-3.bg-light.border-top

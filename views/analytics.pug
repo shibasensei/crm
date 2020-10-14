@@ -15,14 +15,14 @@ html
                     li.nav-item
                         a.nav-link(href='/getClients') Data
                     li.nav-item
-                        a.nav-link(href='/add') Add Client
+                        a.nav-link(href='/add') Add Item
                     li.nav-item.active
                         a.nav-link(href='/analytics') Analytics
                 a.text-warning(href='/profile') #{email}
         #menu.row.h-100.m-0.p-0
             .col-sm-12.col-md-2.float-right.p-0.mh-100
                  #buttons-list.list-group.w-100
-                     button.list-group-item.list-group-item-action.list-group-item-primary.bg-white.hvr-sweep-to-right
+                     button.list-group-item.list-group-item-action.list-group-item-primary.bg-white.hvr-sweep-to-right(id="showSales")
                         | Sales Chart
                      button.list-group-item.list-group-item-action.list-group-item-primary.bg-white.hvr-sweep-to-right
                         |  Coming...
@@ -32,7 +32,7 @@ html
                         |  Coming...
                      button.list-group-item.list-group-item-action.list-group-item-primary.bg-white.hvr-sweep-to-right
                         |  Coming...
-            .col-sm-12.col-md-10
+            .col-sm-12.col-md-10(id="salesContent")
                  .position-relative.overflow-hidden.p-3.p-md-5.m-md-3.text-center.h-100
                      h1.display-4.font-weight-normal.mt-3 Total Sales
                      .chart-container(style='position: relative; height:50vh; width:75vw').mt-5.bg-light
