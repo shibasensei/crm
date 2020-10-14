@@ -22,6 +22,7 @@ app.use(cors());
 const register = require('./controllers/register');
 const clients = require('./controllers/client');
 const login = require('./controllers/login');
+const analytics = require('./controllers/analytics');
 
 const user = require('./global/vars');
 

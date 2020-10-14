@@ -2,12 +2,13 @@
 
 const addClient = (db,user) =>(req,res) =>{
   
-    const {name, phone, comments} = req.body;
+    const {price, quantity, comments,product_name} = req.body;
       db('data')
       .insert({
         email: user.email,
-        clientname: name,
-        clientphone: phone,
+        product_name:product_name,
+        price: price,
+        quantity: quantity,
         comments: comments
       })
       .then(data=>res.status(200))
@@ -26,6 +27,8 @@ const deleteClient = (db,user) =>(req,res) =>{
   .catch(err=>{
     if(err.code==='23505')
       res.status(400).json(102) // 102 i fucked up
+      else
+      console.log(err.code)
   });
 }
 

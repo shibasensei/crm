@@ -13,6 +13,13 @@ main {
   padding-bottom: 60px;
 }
 
+#menu button {
+  color: black;
+  border: none;
+  outline: none;
+  margin: 10px 5px 5px 10px;
+}
+
 /* no rounded borders in bootstrap */
 #menu * {
   border-radius: 0 !important;

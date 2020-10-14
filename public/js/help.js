@@ -59,16 +59,18 @@ function validateEmail(email) {
   }
 
   addClient = () => {
-    const name = document.getElementById("addName").value;
-    const phone = document.getElementById("addPhone").value;
+    const product_name = document.getElementById("addProductName").value;
+    const price = document.getElementById("addPrice").value;
+    const quantity = document.getElementById("addQuantity").value;
     const comments = document.getElementById("addComments").value;
-    if(name!=='' | phone!=='' | comments!==''){
+    if(product_name!=='' | price!=='' | comments!=='' | quantity!==''){
           fetch('http://localhost:3003/client',{
             method: 'post',
             headers: {'Content-Type' : 'application/json'},
             body: JSON.stringify({
-              phone: phone,
-              name: name,
+              price: price,
+              quantity:quantity,
+              product_name: product_name,
               comments: comments
             })
           })
@@ -90,6 +92,7 @@ function validateEmail(email) {
 
   deleteItem = () =>{
     const id = document.getElementById("id").innerHTML;
+    console.log(id)
     fetch('http://localhost:3003/deleteClient',{
         method: 'post',
         headers: {'Content-Type' : 'application/json'},
