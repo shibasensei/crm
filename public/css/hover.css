@@ -1261,7 +1261,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: lightgrey;
+  background: #5bc0de;
   -webkit-transform: scaleX(0);
   transform: scaleX(0);
   -webkit-transform-origin: 0 50%;

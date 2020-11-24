@@ -3,31 +3,32 @@ html
     head
         link(rel="stylesheet", href="css/style.css")
         link(rel="stylesheet", href="bower_components/bootstrap/dist/css/bootstrap.min.css")
-        title Crm
+        title Group 25
     body
-        nav.navbar.navbar-expand.navbar-dark.bg-dark
+        nav.navbar.navbar-expand.navbar-primary.bg-light
             button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarTogglerDemo01' aria-controls='navbarTogglerDemo01' aria-expanded='false' aria-label='Toggle navigation')
                 span.navbar-toggler-icon
             #navbarTogglerDemo01.collapse.navbar-collapse
-                a.ml-1.navbar-brand(href='/welcome') CRM
+                a.ml-1.navbar-brand(href='/welcome') Group 25
                 ul.navbar-nav.mr-auto.mt-2.mt-lg-0
                     li.nav-item
-                        a.nav-link(href='/getClients') Data
+                        a.nav-link(href='/add') Add entry                
                     li.nav-item
-                        a.nav-link(href='/add') Add Item
+                        a.nav-link(href='/getClients') Entries
                     li.nav-item
                         a.nav-link(href='/analytics') Analytics
-                a.text-success(href='/profile') #{email}
+                    li.nav-item
+                        a.nav-link.text-danger(href='/profile') #{email}    
         .position-relative.overflow-hidden.p-3.p-md-1.m-md-3.text-center.bg-white
         main.flex-shrink-0(role='main')
             .container
-                h1.mt-1 Settings
+                h1.mt-1 Profile
                 p.lead
-                | Your email: #{email}
+                | EMAIL: #{email}
                 br
                 br
-                a(href='/logoff') Exit
+                a.text-danger(href='/logoff') Exit
 
-        footer.footer.mt-5.py-3.bg-light.border-top
+        footer.footer.mt-5.py-3.bg-white.border-top
             .container
-             span.text-muted CRM | Viacheslav Verchonov
+             span.text-muted &copy Group 25

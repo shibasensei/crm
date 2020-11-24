@@ -3,24 +3,25 @@ html
     head
         link(rel="stylesheet", href="css/style.css")
         link(rel="stylesheet", href="bower_components/bootstrap/dist/css/bootstrap.min.css")
-        title CRM
+        title Group 25
     body
-        nav.navbar.navbar-expand.navbar-dark.bg-dark
+        nav.navbar.navbar-expand.navbar-primary.bg-light
             button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarTogglerDemo01' aria-controls='navbarTogglerDemo01' aria-expanded='false' aria-label='Toggle navigation')
                 span.navbar-toggler-icon
             #navbarTogglerDemo01.collapse.navbar-collapse
-                a.ml-1.navbar-brand(href='') CRM
+                a.ml-1.navbar-brand(href='') Group 25
                 ul.navbar-nav.mr-auto.mt-2.mt-lg-0
                 form.form-inline.my-2.my-lg-0
                     button.btn.btn-primary(type='button' data-toggle='modal' data-target='#exampleModalCenter')
                         | Login
         .position-relative.overflow-hidden.p-3.p-md-5.m-md-3.text-center.bg-white
             .col-md-5.p-lg-5.mx-auto.my-5
-                h1.display-4.font-weight-normal Manage data
+                h1.display-4.font-weight-normal Group 25 Project
                     p.lead.font-weight-normal.mt-3
-                        | Simple website, so You can manage your business data. Feel free to use :)
-                    button.btn.btn-warning(type='button' data-toggle='modal' data-target='#modalRegister')
-                        | Join now!
+                        | Website create by our team to manage your business 
+                        br
+                        br
+                        | Please, contact us for purchasing or getting trial account 
             .product-device.shadow-sm.d-none.d-md-block
             .product-device.product-device-2.shadow-sm.d-none.d-md-block
         #exampleModalCenter.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true')
@@ -37,7 +38,7 @@ html
                          label.sr-only(for='inputPassword') Password
                          input#inputPasswordLogin.form-control(type='password' placeholder='Password' required='').mt-2
                          button.btn.btn-lg.btn-primary.btn-block(type='submit' onclick='onSubmitSignIn()').mt-2 Sign in
-                         p.mt-3.mb-3.text-muted &copy; Viacheslav Verchonov 2019
+                         p.mt-3.mb-3.text-muted &copy; Group 25 2020
                      .modal-footer
                         .p#statusLogin 
         #modalRegister.modal.fade(tabindex='-1' role='dialog' aria-labelledby='modalRegister' aria-hidden='true')
@@ -53,13 +54,13 @@ html
                          input#inputEmail.form-control(type='email' placeholder='Email address' required='' autofocus='').mt-2
                          label.sr-only(for='inputPassword') Password
                          input#inputPassword.form-control(type='password' placeholder='Password' required='').mt-2
-                         button.btn.btn-lg.btn-warning.btn-block(type='submit' onclick='onSubmitRegister()').mt-2 Register
-                         p.mt-3.mb-3.text-muted &copy; Viacheslav Verchonov 2019
+                         button.btn.btn-lg.btn-info.btn-block(type='submit' onclick='onSubmitRegister()').mt-2 Register
+                         p.mt-3.mb-3.text-muted &copy; Group 25 2020
                      .modal-footer
                         .p#statusRegister
-        footer.footer.mt-5.py-3.bg-light.border-top
+        footer.footer.mt-5.py-3.bg-white.border-top
             .container
-             span.text-muted CRM | Viacheslav Verchonov
+             span.text-muted &copy Group 25
         script(src='bower_components/jquery/dist/jquery.min.js')
         script(src='bower_components/bootstrap/dist/js/bootstrap.min.js')
         script(src='js/help.js')

@@ -3,37 +3,37 @@ html
     head
         link(rel="stylesheet", href="css/style.css")
         link(rel="stylesheet", href="bower_components/bootstrap/dist/css/bootstrap.min.css")
-        title Crm
+        title Group 25
     body
-        nav.navbar.navbar-expand.navbar-dark.bg-dark
+        nav.navbar.navbar-expand.navbar-primary.bg-light
             button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarTogglerDemo01' aria-controls='navbarTogglerDemo01' aria-expanded='false' aria-label='Toggle navigation')
                 span.navbar-toggler-icon
             #navbarTogglerDemo01.collapse.navbar-collapse
-                a.ml-1.navbar-brand(href='/welcome') CRM
+                a.ml-1.navbar-brand(href='/welcome') Group 25
                 ul.navbar-nav.mr-auto.mt-2.mt-lg-0
                     li.nav-item
-                        a.nav-link(href='/getClients') Data
+                        a.nav-link(href='/add') Add entry                
                     li.nav-item
-                        a.nav-link(href='/add') Add Item
+                        a.nav-link(href='/getClients') Entries
                     li.nav-item
                         a.nav-link(href='/analytics') Analytics
-
-                a#userEmail.text-warning(href='/profile') #{email}
+                    li.nav-item
+                        a.nav-link.text-danger(href='/profile') #{email}       
         .position-relative.overflow-hidden.p-3.p-md-5.m-md-3.text-center.bg-white
             .col-md-5.p-lg-5.mx-auto.my-5
-                h1.display-4.font-weight-normal Welcome!
+                h3.display-4 Experience the beauty of data with Group 25
                     p.lead.font-weight-normal.mt-3
                         br
-                        | - check your data in Data page
+                        | This website created to manage your business products. You can add/delete/update entries depending on your requests.
                         br
                         br
-                        | - press on your email to manage account
+                        | Moreover, we implemented graphs, so you can check statistics of your sales.
                         br
                         br
-                        | - user Add Item page to keep your data updated
+                        | Enjoy.
             .product-device.shadow-sm.d-none.d-md-block
             .product-device.product-device-2.shadow-sm.d-none.d-md-block
-        footer.footer.mt-5.py-3.bg-light.border-top
+        footer.footer.mt-5.py-3.bg-white.border-top
             .container
-             span.text-muted CRM | Viacheslav Verchonov
+             span.text-muted &copy Group 25
 
